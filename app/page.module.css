@@ -1,10 +1,10 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6rem;
+  padding: 6rem 150px;
   min-height: 100vh;
+  list-style-type: none;
+
 }
 
 .description {
@@ -107,6 +107,26 @@
 
 .logo {
   position: relative;
+}
+
+.data__loading{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+
+.show__more{
+  background-color:transparent;
+  border:none;
+  margin-top: 20px;
+  display: flex;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.show__more:hover{
+  opacity: 70%;
 }
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {

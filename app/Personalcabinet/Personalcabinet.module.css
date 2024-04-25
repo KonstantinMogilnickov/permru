@@ -1,0 +1,71 @@
+.main{
+    min-height: 40vh;
+    font-family: 'Roboto', sans-serif;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(230,233,237,1) 100%);
+}
+
+.container{
+    min-width: 1440px;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 6rem;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding-bottom: 0;
+}
+
+.title{
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.data{
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
+}
+
+.personal__data{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color:lightgray;
+    padding: 15px;
+    width: 530px;
+    border-radius: 15px;
+}
+
+.delete__account{
+    height: 50px;
+    width: 250px;
+    background-color: red;
+    font-size: 22px;
+    border:none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+.change__password{
+    height: 50px;
+    width: 250px;
+    font-size: 22px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color:red;
+    border:none;
+}
+
+.change{
+    display: flex;
+    flex-direction: row;
+    gap:0 10px ;
+    padding-top: 20px;   
+}
+
+.user__data{
+    font-size: 20px;
+}

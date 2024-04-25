@@ -5,12 +5,27 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "start": "nodemon app.js"
   },
   "dependencies": {
+    "@google-cloud/recaptcha-enterprise": "^5.6.0",
+    "axios": "^1.6.8",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "fs": "^0.0.1-security",
+    "https": "^1.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "net": "^1.0.2",
+    "next": "14.1.4",
+    "pg": "^8.11.5",
+    "querystring": "^0.2.1",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.1.4"
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
   }
 }

@@ -1,95 +1,61 @@
+'use client'
 import Image from "next/image";
 import styles from "./page.module.css";
+import { Header } from "./components/Header/Header";
+import { Footer } from "./components/Footer/Footer";
+import { useState, useEffect} from "react";
+import { CardsList } from "./Components/CardList/CardList";
 
 export default function Home() {
+  const [news, setNews] = useState([]);
+  const [visibleNews, setVisibleNews] = useState(2);
+  function handleShowMore() {
+    setVisibleNews((prevVisibleNews) => prevVisibleNews + 2); // Показываем по две новостные записи
+  };
+  useEffect(() => {
+    async function fetchNews() {
+      try {
+        const response = await fetch('http://127.0.0.1:3001/getNews');
+        const newsData = await response.json(); // Получаем данные в формате JSON
+        const filteredNews = filterNewsByCategory(newsData, "1");
+        console.log(newsData) // Фильтруем новости по категории
+        setNews(filteredNews);
+      } catch (error) {
+        console.error('Ошибка при получении новостей:', error.message);
+        
+      }
+    }
+    fetchNews();
+  }, []);
+
+  function filterNewsByCategory(newsData, categoryId) {
+    return newsData.filter(news => news.id_category === categoryId);
+  }
   return (
+    <>
+    <Header/>
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
+      {news.length > 0 ? (
+          <>
+            <CardsList
+              id="popular"
+              title="Новости"
+              data={news.slice(0, visibleNews)} // Отображаем только visibleNews записей
             />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+            {news.length > visibleNews && ( // Показываем кнопку только если есть еще записи для отображения
+              <button onClick={handleShowMore} className={styles['show__more']}>
+                Показать больше
+              </button>
+            )}
+          </>
+        ) : (
+          <div className={styles["data__loading"]}>
+            "Данные загружаются"
+          </div>
+        )}
     </main>
+    <Footer/>
+    </>
+    
   );
 }

@@ -1,0 +1,82 @@
+ .registration{
+    background-color:white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    background-color:#f3f5f7;
+ }
+
+ .reg__title{
+   width: 50%;
+   padding-left: 150px;
+   padding-top: 50px;
+   background-color:#f3f5f7;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+ }
+
+ .title{
+   font-family: 'Roboto', sans-serif;
+ }
+
+ .reg_form{
+  
+   padding-left: 150px;
+   padding-top: 50px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+ }
+
+ .form{
+   padding-top: 20px;
+   display: flex;
+   flex-direction: column;
+   gap: 10px 0;
+   background-color:#fff;
+   padding: 20px;
+   margin: 10px;
+   border-radius:10px;
+ }
+
+ .reg__input{
+   height: 50px;
+   width: 400px;
+   border-radius:5px;
+   font-size: 16px;
+   text-align: left;
+   padding: 10px;
+   color:black;
+   opacity: 50%;
+ }
+
+ .btn__registration{
+   height: 50px;
+   background-color: #0000FF;
+   color: white;
+   border:none;
+   font-size: 25px;
+   border-radius:5px;
+   font-weight: bold;
+ }
+
+ .error{
+   padding: 5px 0;
+   color: red;
+   max-width: 400px;
+ }
+
+ .g-recaptcha{
+  height: 100px;
+ }
+
+ .label__text{
+  font-weight: bold;
+  font-size: 16px;
+ }
+
+ .gerb{
+  padding-top: 30px;
+ }
