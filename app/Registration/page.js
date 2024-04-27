@@ -7,7 +7,6 @@ import Image from 'next/image';
 
 export default function Registration (){
   const [passwordError, setPasswordError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     login: '',
     email: '',
@@ -30,12 +29,6 @@ export default function Registration (){
       document.body.removeChild(script);
     };
   }, []);
-
-  // function onClick(e) {
-  //   e.preventDefault();
-  //   setIsLoading(true);
-  //   window.smartCaptcha.execute();
-  // }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -66,7 +59,7 @@ export default function Registration (){
 
     else{
       try {
-        const response = await fetch('http://127.0.0.1:3001/insertUser', {
+        const response = await fetch('http://127.0.0.1:3001/user/insertUser', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -76,6 +69,7 @@ export default function Registration (){
         const result = await response.text();
         alert(result);
         setPasswordError('');
+        window.location.href = '/';
       } catch (error) {
         console.error('Ошибка при отправке данных:', error.message);
         alert('Произошла ошибка при отправке данных');
@@ -178,7 +172,6 @@ return(
       </button>
       </form>
     </div>
-      {/* <Link href="/">Вернуться на главную</Link> */}
     </main>
 )
 };

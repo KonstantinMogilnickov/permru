@@ -9,7 +9,6 @@
     "start": "nodemon app.js"
   },
   "dependencies": {
-    "@google-cloud/recaptcha-enterprise": "^5.6.0",
     "axios": "^1.6.8",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",

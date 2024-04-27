@@ -78,7 +78,13 @@
     text-transform: uppercase;
     border: none;
     padding: 16px 24px;
-    transition: color 0.3s ease-in, background-color 0.3s ease-in;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  .form__submit:hover{
+    opacity: 70%;
+    transition: all 0.3s ease-in-out;
   }
 
 
@@ -94,5 +100,9 @@
 
   .reg_link{
    color: #0000FF;
+  }
+
+  .reg_link:hover{
+    opacity: 80%;
   }
   

@@ -4,7 +4,9 @@
   padding: 6rem 150px;
   min-height: 100vh;
   list-style-type: none;
-
+  font-family: 'Roboto', sans-serif;
+  background: rgb(255,255,255);
+  background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(230,233,237,1) 100%);
 }
 
 .description {
@@ -127,6 +129,12 @@
 
 .show__more:hover{
   opacity: 70%;
+}
+
+.data__loading{
+  padding-top: 300px;
+  font-weight: bold;
+  font-size: 30px;
 }
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {

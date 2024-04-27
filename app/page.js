@@ -5,6 +5,11 @@ import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
 import { useState, useEffect} from "react";
 import { CardsList } from "./Components/CardList/CardList";
+import { Preloader } from "./Components/Preloader/Preloader";
+
+
+//////////////////////////////////////////////////////////////
+
 
 export default function Home() {
   const [news, setNews] = useState([]);
@@ -15,7 +20,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchNews() {
       try {
-        const response = await fetch('http://127.0.0.1:3001/getNews');
+        const response = await fetch('http://127.0.0.1:3001/news');
         const newsData = await response.json(); // Получаем данные в формате JSON
         const filteredNews = filterNewsByCategory(newsData, "1");
         console.log(newsData) // Фильтруем новости по категории
@@ -28,8 +33,8 @@ export default function Home() {
     fetchNews();
   }, []);
 
-  function filterNewsByCategory(newsData, categoryId) {
-    return newsData.filter(news => news.id_category === categoryId);
+  function filterNewsByCategory(newsData, statusId) {
+    return newsData.filter(news => news.id_news_status === statusId);
   }
   return (
     <>
@@ -50,7 +55,7 @@ export default function Home() {
           </>
         ) : (
           <div className={styles["data__loading"]}>
-            "Данные загружаются"
+            <Preloader/>
           </div>
         )}
     </main>
