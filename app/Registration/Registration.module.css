@@ -5,6 +5,10 @@
     display: flex;
     font-family: 'Roboto', sans-serif;
     background-color:#f3f5f7;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Стандарт */
  }
 
  .reg__title{
@@ -80,3 +84,21 @@
  .gerb{
   padding-top: 30px;
  }
+
+ .show__password__button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333; /* Цвет текста кнопки */
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #333; /* Граница кнопки */
+  transition: all 0.5s ease-in-out;
+}
+
+.show__password__button:hover {
+  background-color: #333; /* Цвет фона при наведении */
+  color: #fff; /* Цвет текста при наведении */
+  transition: all 0.5s ease-in-out;
+}

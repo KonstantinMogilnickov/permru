@@ -59,8 +59,23 @@ const deleteAccount = async (req, res) => {
         res.status(500).send('Internal server error');
     }
 }
+
+const updateUserPassword = async (req, res) => {
+    try{
+        const { id, password } = req.body;
+        const query = 'UPDATE users SET password = $1 WHERE id = $2';
+        const result = await client.query(query, [password, id]);
+        res.status(200).json({ message: 'Пароль успешно изменен' });
+    }
+    catch(error){
+        console.log(error);
+        res.status(500).send('Internal server error');
+    }
+};
+
+
    
 module.exports = {
-    insertUser, loginUser, deleteAccount
+    insertUser, loginUser, deleteAccount, updateUserPassword
 }
     

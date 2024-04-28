@@ -20,6 +20,29 @@
   font-family: var(--font-mono);
 }
 
+.popular__links__block{
+  display: flex;
+  padding-top: 20px;
+  gap: 0 40px;
+  align-items:center;
+}
+
+.popular__links__title{
+  font-size: 24px;
+}
+
+.popular__links{
+  display: flex;
+  gap: 0 40px;
+  list-style-type: none;
+}
+
+.popular__links__item{
+  color: #0000FF;
+  font-weight: bold;
+  font-size: 20px;
+}
+
 .description a {
   display: flex;
   justify-content: center;

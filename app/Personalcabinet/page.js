@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Overlay } from "../Components/Overlay/Overlay";
 import { Popup } from "../Components/Popup/Popup";
 import { DeleteAccountForm } from "../Components/DeleteAccountForm/DeleteAccountForm";
-
+import { ChangePasswordForm } from "../Components/ChangePasswordForm/ChangePasswordForm";
 
 ////////////////////////////////////////////////////
 
@@ -16,6 +16,7 @@ export default function personalcabinet() {
   const userData = JSON.parse(userDataString);
 
   const [popupIsOpened, setPopupIsOpened] = useState(false);
+  const [changePasswordPopupIsOpened, setChangePasswordPopupIsOpened] = useState(false);
 
   const isOpen = () => {
     setPopupIsOpened(true);
@@ -23,6 +24,14 @@ export default function personalcabinet() {
 
   const isClose = () => {
     setPopupIsOpened(false);
+  };
+
+  const openChangePasswordPopup = () => {
+    setChangePasswordPopupIsOpened(true);
+  };
+
+  const closeChangePasswordPopup = () => {
+    setChangePasswordPopupIsOpened(false);
   };
 
   return (
@@ -44,11 +53,15 @@ export default function personalcabinet() {
               <p className={Styles["user__data"]}>
                 Электронная почта: {userData.email}
               </p>
+
+              <p className={Styles["user__data"]}>
+                Пароль: {userData.password}
+              </p>
               {userData.id_role === "3" && <button>нажми</button>}
             </div>
 
             <div className={Styles["change"]}>
-              <button className={Styles["change__password"]}>
+              <button className={Styles["change__password"]} onClick={openChangePasswordPopup}>
                 Изменить пароль
               </button>
               <button
@@ -60,10 +73,14 @@ export default function personalcabinet() {
             </div>
           </div>
         )}
-          <Overlay isOpened={popupIsOpened} onClose={isClose} />
+          <Overlay isOpened={popupIsOpened || changePasswordPopupIsOpened} onClose={isClose || closeChangePasswordPopup} />
                 <Popup isOpen={popupIsOpened} onClose={isClose}>
                     <DeleteAccountForm onClose={isClose}/>
                 </Popup>
+
+                <Popup isOpen={changePasswordPopupIsOpened} onClose={closeChangePasswordPopup}>
+                    <ChangePasswordForm onClose={closeChangePasswordPopup}/>
+            </Popup>
       </main>
       <Footer />
     </>

@@ -1,12 +1,11 @@
-'use client'
-import Image from "next/image";
+'use client';
 import styles from "./page.module.css";
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
 import { useState, useEffect} from "react";
 import { CardsList } from "./Components/CardList/CardList";
 import { Preloader } from "./Components/Preloader/Preloader";
-
+import Link from "next/link";
 
 //////////////////////////////////////////////////////////////
 
@@ -27,7 +26,6 @@ export default function Home() {
         setNews(filteredNews);
       } catch (error) {
         console.error('Ошибка при получении новостей:', error.message);
-        
       }
     }
     fetchNews();
@@ -40,6 +38,25 @@ export default function Home() {
     <>
     <Header/>
     <main className={styles.main}>
+
+      <div className={styles["popular__links__block"]}>
+        <h3 className={styles['popular__links__title']}>
+          Популярные ссылки:
+        </h3>
+        <ul className={styles["popular__links"]}>
+          <li>
+            <Link className={styles['popular__links__item']} href='#'>
+              Записаться к врачу
+            </Link>
+          </li>
+            <li>
+              <Link className={styles['popular__links__item']} href='#'>
+                Электронный дневник
+              </Link>
+            </li>
+        </ul>
+      </div>
+
       {news.length > 0 ? (
           <>
             <CardsList

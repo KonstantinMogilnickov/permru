@@ -7,6 +7,13 @@ import Image from 'next/image';
 
 export default function Registration (){
   const [passwordError, setPasswordError] = useState('');
+
+  const [showPassword, setShowPassword] = useState(false); // Состояние для отображения пароля
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(prevState => !prevState); // Изменяем состояние при нажатии на кнопку
+  };
+
   const [formData, setFormData] = useState({
     login: '',
     email: '',
@@ -142,24 +149,30 @@ return(
         
         <label className={Styles["label__text"]} htmlFor="email">Пароль</label>
         <input 
-        className={Styles["reg__input"]}
-        placeholder="***********"
-        type="password" 
-        id="password" 
-        name="password" 
-        value={formData.password} 
-        onChange={handleChange} 
-        required />
+              className={Styles["reg__input"]}
+              placeholder="***********"
+              type={showPassword ? "text" : "password"} 
+              id="password" 
+              name="password" 
+              value={formData.password} 
+              onChange={handleChange} 
+              required />
+            <button 
+              type="button" 
+              className={Styles["show__password__button"]}
+              onClick={togglePasswordVisibility}>
+              {showPassword ? "Скрыть пароль" : "Показать пароль"}
+            </button>
         <label className={Styles["label__text"]} htmlFor="email">Повторите пароль</label>
-        <input 
-          className={Styles["reg__input"]}
-          placeholder="***********"
-          type="password" 
-          id="confirmPassword" 
-          name="confirmPassword" 
-          value={formData.confirmPassword} 
-          onChange={handleChange} 
-          required />
+          <input 
+            className={Styles["reg__input"]}
+            placeholder="***********"
+            type="password" 
+            id="confirmPassword" 
+            name="confirmPassword" 
+            value={formData.confirmPassword} 
+            onChange={handleChange} 
+            required />
         <div 
           id="captcha-container" 
           className="smart-captcha" 
