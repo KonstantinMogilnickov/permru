@@ -16,8 +16,8 @@ export default function News (){
           try {
             const response = await fetch('http://127.0.0.1:3001/news');
             const newsData = await response.json(); // Получаем данные в формате JSON
-            const filteredNews = filterNewsByCategory(newsData, "1");
-            console.log(newsData) // Фильтруем новости по категории
+            const filteredNews = filterNewsByCategory(newsData, "1");//фильтр по актуальности
+            console.log(newsData) 
             setNews(filteredNews);
           } catch (error) {
             console.error('Ошибка при получении новостей:', error.message);

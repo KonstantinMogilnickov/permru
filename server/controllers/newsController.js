@@ -2,7 +2,11 @@ const {client} = require("../database/connect");
 
 const getNews = async (req, res) => {
     try{
-        const query = 'SELECT * FROM news';
+        const query = `
+        SELECT n.*, c.category
+        FROM news n
+        INNER JOIN news_category c ON n.id_category = c.id
+        `;
         const result = await client.query(query);  
         res.status(200).json(result.rows);
         
@@ -13,5 +17,5 @@ const getNews = async (req, res) => {
 }
 
 module.exports = {
-    getNews
+    getNews 
 }

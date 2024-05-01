@@ -1,5 +1,6 @@
-.main{
+.main {
     display: flex;
+    gap: 40px;
     flex-direction: column;
     padding: 6rem 150px;
     min-height: 100vh;
@@ -7,10 +8,18 @@
     font-family: 'Roboto', sans-serif;
     background: rgb(255,255,255);
     background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(230,233,237,1) 100%);
-}
-
-.author__and__date__block{
+  }
+  
+  .author__and__date__block{
     display: flex;
     flex-direction: row;
     gap: 0 40px;
-}
+    opacity: 70%;
+  }
+   .news__text{
+    line-height: 30px;
+   }
+
+   .news__title{
+    padding-top: 20px;
+   }

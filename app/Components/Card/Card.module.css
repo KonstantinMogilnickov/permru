@@ -42,7 +42,7 @@
     .card {
       border-radius:10px;
       min-width: 750px;
-
+      max-width: 750px;
       height: 100%;
       display: flex;
       flex-direction: column;

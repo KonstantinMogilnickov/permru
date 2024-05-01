@@ -24,7 +24,7 @@
   display: flex;
   padding-top: 20px;
   gap: 0 40px;
-  align-items:center;
+  align-items:end;
 }
 
 .popular__links__title{
@@ -39,7 +39,6 @@
 
 .popular__links__item{
   color: #0000FF;
-  font-weight: bold;
   font-size: 20px;
 }
 
@@ -159,6 +158,7 @@
   font-weight: bold;
   font-size: 30px;
 }
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {

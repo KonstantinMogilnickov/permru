@@ -3,10 +3,12 @@
     background-color: #e6e9ed;
     margin: 0;
     padding: 0;
-    display: flex;
-    
 }
 
+.footer__block{
+    display: flex;
+
+}
 .container{
     min-width: 1440px;
     padding: 0 150px;
@@ -55,4 +57,10 @@
 .footer-menu-item-link{
     color: black;
     text-decoration: none;
+}
+
+.hr{
+    height: 2px;
+    margin-top: 100px;
+    background-color:black
 }

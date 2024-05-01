@@ -58,12 +58,19 @@
 
  .btn__registration{
    height: 50px;
-   background-color: #0000FF;
+   background-color: #007bff;
    color: white;
    border:none;
    font-size: 25px;
    border-radius:5px;
    font-weight: bold;
+   cursor: pointer;
+   transition: all 0.5s ease-in-out;
+ }
+
+ .btn__registration:hover{
+  opacity: 70%;
+  transition: all 0.5s ease-in-out;
  }
 
  .error{

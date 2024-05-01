@@ -5,6 +5,7 @@ import { Footer } from "./components/Footer/Footer";
 import { useState, useEffect} from "react";
 import { CardsList } from "./Components/CardList/CardList";
 import { Preloader } from "./Components/Preloader/Preloader";
+import { MainThemes } from "./Components/MainThemes/MainThemes";
 import Link from "next/link";
 
 //////////////////////////////////////////////////////////////
@@ -75,6 +76,9 @@ export default function Home() {
             <Preloader/>
           </div>
         )}
+
+        <MainThemes/>
+
     </main>
     <Footer/>
     </>

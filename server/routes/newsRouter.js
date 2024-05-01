@@ -1,5 +1,5 @@
 const express = require('express');
-const { getNews } = require('../controllers/newsController');
+const { getNews, getAllNewsIds, getNewsById } = require('../controllers/newsController');
 const newsRouter = express.Router();
 
 ////////////////////////////////////

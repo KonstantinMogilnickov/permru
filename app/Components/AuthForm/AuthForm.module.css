@@ -50,12 +50,13 @@
     text-transform: uppercase;
     border: none;
     padding: 16px 24px;
-    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
   }
   
   .form__reset:hover {
     color: white;
-    background-color: #0000FF;
+    background-color: #007bff;
+    transition: all 0.5s ease-in-out;
   }
   
   .form__reset:disabled {
@@ -69,7 +70,7 @@
   }
   
   .form__submit {
-    background-color: #0000FF;
+    background-color: #007bff;
     color: #fff;
     width: 100%;
     border-radius:5px;
@@ -78,13 +79,13 @@
     text-transform: uppercase;
     border: none;
     padding: 16px 24px;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
     cursor: pointer;
   }
 
   .form__submit:hover{
     opacity: 70%;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
   }
 
 
@@ -99,7 +100,7 @@
   }
 
   .reg_link{
-   color: #0000FF;
+   color: #007bff;
   }
 
   .reg_link:hover{
