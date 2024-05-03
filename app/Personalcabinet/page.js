@@ -7,7 +7,7 @@ import { Overlay } from "../Components/Overlay/Overlay";
 import { Popup } from "../Components/Popup/Popup";
 import { DeleteAccountForm } from "../Components/DeleteAccountForm/DeleteAccountForm";
 import { ChangePasswordForm } from "../Components/ChangePasswordForm/ChangePasswordForm";
-
+import Link from "next/link";
 ////////////////////////////////////////////////////
 
 
@@ -58,6 +58,10 @@ export default function personalcabinet() {
                 Пароль: {userData.password}
               </p>
               {userData.id_role === "3" && <button>нажми</button>}
+              {userData.id_role === "4" && <button>
+                <Link href='/AddNews'>
+                Редактор новостей
+              </Link></button>}
             </div>
 
             <div className={Styles["change"]}>

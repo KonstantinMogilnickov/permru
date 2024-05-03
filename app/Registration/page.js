@@ -62,8 +62,6 @@ export default function Registration (){
       return;
     }
 
-    
-
     else{
       try {
         const response = await fetch('http://127.0.0.1:3001/user/insertUser', {
