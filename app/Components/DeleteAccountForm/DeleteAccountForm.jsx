@@ -8,7 +8,7 @@ export const DeleteAccountForm = (props) => {
 
     const onDelete = async () => {
         try{
-            const response = await fetch('http://127.0.0.1:3001/user/deleteAccount',{
+            const response = await fetch('http://localhost:3001//user/deleteAccount',{
                 method: 'DELETE',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ id: userData.id }),

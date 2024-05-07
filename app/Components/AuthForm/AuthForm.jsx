@@ -25,7 +25,7 @@ export const AuthForm = (props) => {
   const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-          const response = await axios.post('http://127.0.0.1:3001/user/loginUser', loginData); //Запрос на сервер для аутентификации
+          const response = await axios.post('http://localhost:3001/user/loginUser', loginData); //Запрос на сервер для аутентификации
           const token = response.data.token; //Получение токена в ответе от сервера
  
           localStorage.setItem('token', token);//Сохранение токена в локальное хранилище

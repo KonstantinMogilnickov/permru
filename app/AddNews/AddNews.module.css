@@ -9,11 +9,59 @@
     background: rgb(255,255,255);
     background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(230,233,237,1) 100%);
   }
-
-  .form{
-    margin-top: 20px;
+  
+  .form {
     display: flex;
     flex-direction: column;
-    gap: 10px 0;
-    width: 350px;
+    gap: 10px;
+    max-width: 500px;
+    margin-top: 20px;
+  }
+  
+  .form__label {
+    font-weight: bold;
+  }
+  
+  .add__title,
+  .add__text,
+  .add__date,
+  .add__creator,
+  .add__category {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .add__image{
+    border:none;
+  }
+
+  .add__text{
+    width: 500px;
+    height: 300px;
+  }
+
+  .add__category {
+    font-size: 16px; /* Установите желаемый размер шрифта */
+  }
+  
+  .add__category__item {
+    font-size: 16px; /* Установите желаемый размер шрифта */
+    font-weight: bold; /* Установите желаемый вес шрифта */
+    color: #333; /* Установите желаемый цвет текста */
+  }
+  
+  .btn__submit {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn__submit:hover {
+    background-color: #0056b3;
   }

@@ -10,7 +10,7 @@ export default function AddNews() {
     const fetchCategories = async () => {
       try {
         const response = await fetch(
-          "http://127.0.0.1:3001/news/getCategories"
+          "http://localhost:3001/news/getCategories"
         );
         const data = await response.json();
         setCategories(data);
@@ -39,26 +39,35 @@ export default function AddNews() {
     try {
       const newsImage = new FormData();
       newsImage.append('image', e.target.image_path.files[0]);
-      const response = await fetch("http://127.0.0.1:3001/upload", {
+      const response = await fetch("http://localhost:3001/upload", {
         method: "POST",
         body: newsImage,
       });
 
       console.log(formData.image_path);
-  
+
       if (response.ok) {
         const data = await response.json();
         console.log(data); // Вы можете использовать данные о загруженном файле, если это необходимо
         alert("Изображение успешно загружено");
 
-        const addNewsResponse = await fetch("http://127.0.0.1:3001/news/addNews", {
+        // Получаем путь к загруженному файлу
+        const imagePath = data.file;
+
+        // Добавляем путь к загруженному файлу в formData
+        setFormData({
+          ...formData,
+          image_path: imagePath
+        });
+
+        const addNewsResponse = await fetch("http://localhost:3001/news/addNews", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(formData),
         });
-  
+
         if (addNewsResponse.ok) {
           alert("Новость успешно добавлена");
         } else {
@@ -77,9 +86,10 @@ export default function AddNews() {
     <>
       <Header />
       <main className={styles.main}>
-        <form className={styles["form"]} onSubmit={handleSubmit} enctype="multipart/form-data">
-          <label htmlFor="title">Укажите заголовок:</label>
+        <form className={styles["form"]} onSubmit={handleSubmit} encType="multipart/form-data">
+          <label className={styles['form__label']} htmlFor="title">Укажите заголовок:</label>
           <input
+            className={styles['add__title']}
             type="text"
             name="title"
             id="title"
@@ -90,8 +100,9 @@ export default function AddNews() {
             required
           />
 
-          <label htmlFor="text">Укажите основной текст:</label>
+          <label className={styles['form__label']} htmlFor="text">Укажите основной текст:</label>
           <textarea
+            className={styles['add__text']}
             name="text"
             id="text"
             value={formData.text}
@@ -99,18 +110,20 @@ export default function AddNews() {
             required
           />
 
-          <label htmlFor="image_path">Укажите картинку:</label>
+          <label className={styles['form__label']} htmlFor="image_path">Укажите картинку:</label>
           <input
+            className={styles['add__image']}
             type="file"
             name="image_path"
             id="image_path"
             onChange={(e) =>
-                setFormData({ ...formData, image_path: `/image/${e.target.files[0].name}` })
+                setFormData({ ...formData, image_path: `/image/news/${e.target.files[0].name}` })
               }
           />
 
-          <label htmlFor="date">Укажите дату:</label>
+          <label className={styles['form__label']} htmlFor="date">Укажите дату:</label>
           <input
+            className={styles['add__date']}
             type="date"
             name="date"
             id="date"
@@ -118,8 +131,9 @@ export default function AddNews() {
             onChange={(e) => setFormData({ ...formData, date: e.target.value })}
           />
 
-          <label htmlFor="creator">Укажите автора:</label>
+          <label className={styles['form__label']} htmlFor="creator">Укажите автора:</label>
           <input
+            className={styles['add__creator']}
             type="text"
             name="creator"
             id="creator"
@@ -129,8 +143,9 @@ export default function AddNews() {
             }
           />
 
-          <label htmlFor="id_category">Укажите категорию:</label>
+          <label className={styles['form__label']} htmlFor="id_category">Укажите категорию:</label>
           <select
+            className={styles["add__category"]}
             name="id_category"
             id="id_category"
             value={formData.id_category}
@@ -138,11 +153,10 @@ export default function AddNews() {
               setFormData({ ...formData, id_category: e.target.value })
             }
           >
-            <option value="">Выберите категорию</option>
             {/* Проверка наличия категорий перед отображением */}
             {categories && categories.length > 0 ? (
               categories.map((category) => (
-                <option key={category.id} value={category.id}>
+                <option className={styles['add__category__item']} key={category.id} value={category.id}>
                   {category.category}
                 </option>
               ))
@@ -152,7 +166,7 @@ export default function AddNews() {
               </option>
             )}
           </select>
-          <button type="submit">Добавить</button>
+          <button className={styles['btn__submit']} type="submit">Добавить</button>
         </form>
       </main>
       <Footer />

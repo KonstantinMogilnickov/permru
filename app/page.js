@@ -8,6 +8,7 @@ import { Preloader } from "./Components/Preloader/Preloader";
 import { MainThemes } from "./Components/MainThemes/MainThemes";
 import Link from "next/link";
 
+
 //////////////////////////////////////////////////////////////
 
 
@@ -20,7 +21,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchNews() {
       try {
-        const response = await fetch('http://127.0.0.1:3001/news');
+        const response = await fetch('http://localhost:3001/news');
         const newsData = await response.json(); // Получаем данные в формате JSON
         const filteredNews = filterNewsByCategory(newsData, "1");
         console.log(newsData) // Фильтруем новости по категории

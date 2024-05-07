@@ -8,10 +8,12 @@ import { Popup } from "../Components/Popup/Popup";
 import { DeleteAccountForm } from "../Components/DeleteAccountForm/DeleteAccountForm";
 import { ChangePasswordForm } from "../Components/ChangePasswordForm/ChangePasswordForm";
 import Link from "next/link";
+
+
 ////////////////////////////////////////////////////
 
 
-export default function personalcabinet() {
+export default function PersonalCabinet() {
   const userDataString = localStorage.getItem("userData");
   const userData = JSON.parse(userDataString);
 
@@ -58,8 +60,8 @@ export default function personalcabinet() {
                 Пароль: {userData.password}
               </p>
               {userData.id_role === "3" && <button>нажми</button>}
-              {userData.id_role === "4" && <button>
-                <Link href='/AddNews'>
+              {userData.id_role === "4" && <button className={Styles['btn__add__news']}>
+                <Link className={Styles['add__news__link']} href='/AddNews'>
                 Редактор новостей
               </Link></button>}
             </div>

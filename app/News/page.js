@@ -14,7 +14,7 @@ export default function News (){
     useEffect(() => {
         async function fetchNews() {
           try {
-            const response = await fetch('http://127.0.0.1:3001/news');
+            const response = await fetch('http://localhost:3001/news');
             const newsData = await response.json(); // Получаем данные в формате JSON
             const filteredNews = filterNewsByCategory(newsData, "1");//фильтр по актуальности
             console.log(newsData) 
