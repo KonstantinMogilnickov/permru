@@ -41,7 +41,7 @@ export default function NewsPage({ id }) {
                <div className={styles["news__category"]}>{selectedNews.category}</div>
             </div>
 
-            <Image className={styles['news__image']} src={selectedNews.image_path} width={1000} height={500}></Image>
+            <Image className={styles['news__image']} src={selectedNews.image_path} width={1000} height={500} alt={'news_image'}></Image>
             <p className={styles["news__text"]}>         
               {selectedNews.text}
             </p>

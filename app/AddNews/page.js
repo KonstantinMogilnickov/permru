@@ -3,6 +3,7 @@ import styles from "./AddNews.module.css";
 import { Header } from "../Components/Header/Header";
 import { Footer } from "../Components/Footer/Footer";
 import { useState, useEffect } from "react";
+import {BASE_URL} from "../api/config";
 
 export default function AddNews() {
   const [categories, setCategories] = useState([]);
@@ -10,7 +11,7 @@ export default function AddNews() {
     const fetchCategories = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3001/news/getCategories"
+          `${BASE_URL}/news/getCategories`
         );
         const data = await response.json();
         setCategories(data);
@@ -39,7 +40,7 @@ export default function AddNews() {
     try {
       const newsImage = new FormData();
       newsImage.append('image', e.target.image_path.files[0]);
-      const response = await fetch("http://localhost:3001/upload", {
+      const response = await fetch(`${BASE_URL}/upload`, {
         method: "POST",
         body: newsImage,
       });
@@ -60,7 +61,7 @@ export default function AddNews() {
           image_path: imagePath
         });
 
-        const addNewsResponse = await fetch("http://localhost:3001/news/addNews", {
+        const addNewsResponse = await fetch(`${BASE_URL}/news/addNews`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

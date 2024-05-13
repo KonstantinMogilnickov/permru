@@ -2,11 +2,11 @@
 import Link from 'next/link';
 import Styles from './AuthForm.module.css';
 import {useState} from 'react';
-import axios from 'axios'; 
+import axios from 'axios';
+import {BASE_URL} from '../../api/config';
 
 
 /////////////////////////////////////////////////////////
-
 
 
 export const AuthForm = (props) => {
@@ -25,7 +25,7 @@ export const AuthForm = (props) => {
   const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-          const response = await axios.post('http://localhost:3001/user/loginUser', loginData); //Запрос на сервер для аутентификации
+          const response = await axios.post(`${BASE_URL}/user/loginUser`, loginData); //Запрос на сервер для аутентификации
           const token = response.data.token; //Получение токена в ответе от сервера
  
           localStorage.setItem('token', token);//Сохранение токена в локальное хранилище

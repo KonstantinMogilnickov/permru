@@ -1,8 +1,9 @@
 'use client'
-import Link from "next/link"
+
 import Styles from './Registration.module.css'
 import { useState, useEffect} from "react";
 import Image from 'next/image';
+import {BASE_URL} from "../api/config";
 
 
 export default function Registration (){
@@ -22,7 +23,7 @@ export default function Registration (){
     patrynumic: '',
     id_role:1,
     password:'',
-    confirmPassword: '' 
+    confirmPassword: ''
   });
 
   useEffect(() => {
@@ -31,7 +32,7 @@ export default function Registration (){
     script.async = true;
     script.defer = true;
     document.body.appendChild(script);
-  
+
     return () => {
       document.body.removeChild(script);
     };
@@ -64,7 +65,7 @@ export default function Registration (){
 
     else{
       try {
-        const response = await fetch('http://localhost:3001//user/insertUser', {
+        const response = await fetch(`${BASE_URL}/user/insertUser`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -93,87 +94,87 @@ return(
       <h1>РЕГИСТРАЦИЯ</h1>
       <form className={Styles['form']} onSubmit={handleSubmit}>
         <label className={Styles["label__text"]} htmlFor="email">Логин</label>
-        <input 
+        <input
         className={Styles["reg__input"]}
-        placeholder="Логин" 
-        type="text" 
-        id="login" 
-        name="login" 
-        value={formData.login} 
-        onChange={handleChange} 
+        placeholder="Логин"
+        type="text"
+        id="login"
+        name="login"
+        value={formData.login}
+        onChange={handleChange}
         required />
 
         <label className={Styles["label__text"]} htmlFor="email">email</label>
 
-        <input 
+        <input
         className={Styles["reg__input"]}
-        placeholder="email" 
-        type="email" 
-        id="email" 
-        name="email" 
-        value={formData.email} 
-        onChange={handleChange} 
+        placeholder="email"
+        type="email"
+        id="email"
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
         required />
         <label className={Styles["label__text"]} htmlFor="email">Имя</label>
-        <input 
+        <input
         className={Styles["reg__input"]}
         placeholder="Имя"
-        type="text" 
-        id="name" 
-        name="name" 
-        value={formData.name} 
-        onChange={handleChange} 
+        type="text"
+        id="name"
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
         required />
         <label className={Styles["label__text"]} htmlFor="email">Фамилия</label>
-        <input 
+        <input
         className={Styles["reg__input"]}
         placeholder="Фамилия"
-        type="text" 
-        id="surname" 
-        name="surname" 
-        value={formData.surname} 
-        onChange={handleChange} 
+        type="text"
+        id="surname"
+        name="surname"
+        value={formData.surname}
+        onChange={handleChange}
         required />
          <label className={Styles["label__text"]} htmlFor="email">Отчество</label>
-        <input 
+        <input
         className={Styles["reg__input"]}
         placeholder="отчество"
-        type="text" 
-        id="patrynumic" 
-        name="patrynumic" 
-        value={formData.patrynumic} 
-        onChange={handleChange} 
+        type="text"
+        id="patrynumic"
+        name="patrynumic"
+        value={formData.patrynumic}
+        onChange={handleChange}
         required />
-        
+
         <label className={Styles["label__text"]} htmlFor="email">Пароль</label>
-        <input 
+        <input
               className={Styles["reg__input"]}
               placeholder="***********"
-              type={showPassword ? "text" : "password"} 
-              id="password" 
-              name="password" 
-              value={formData.password} 
-              onChange={handleChange} 
+              type={showPassword ? "text" : "password"}
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
               required />
-            <button 
-              type="button" 
+            <button
+              type="button"
               className={Styles["show__password__button"]}
               onClick={togglePasswordVisibility}>
               {showPassword ? "Скрыть пароль" : "Показать пароль"}
             </button>
         <label className={Styles["label__text"]} htmlFor="email">Повторите пароль</label>
-          <input 
+          <input
             className={Styles["reg__input"]}
             placeholder="***********"
-            type="password" 
-            id="confirmPassword" 
-            name="confirmPassword" 
-            value={formData.confirmPassword} 
-            onChange={handleChange} 
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleChange}
             required />
-        <div 
-          id="captcha-container" 
-          className="smart-captcha" 
+        <div
+          id="captcha-container"
+          className="smart-captcha"
           data-sitekey="ysc1_D1bRfReZIU3Opm8TbOynCR99iQcenEkCYgPE3D5m390a7af9">
         <input type="hidden" name="smart-token"/>
         </div>

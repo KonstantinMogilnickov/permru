@@ -7,7 +7,7 @@ import { CardsList } from "./Components/CardList/CardList";
 import { Preloader } from "./Components/Preloader/Preloader";
 import { MainThemes } from "./Components/MainThemes/MainThemes";
 import Link from "next/link";
-
+import {BASE_URL} from './api/config';
 
 //////////////////////////////////////////////////////////////
 
@@ -21,7 +21,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchNews() {
       try {
-        const response = await fetch('http://localhost:3001/news');
+        const response = await fetch(`${BASE_URL}/news`);
         const newsData = await response.json(); // Получаем данные в формате JSON
         const filteredNews = filterNewsByCategory(newsData, "1");
         console.log(newsData) // Фильтруем новости по категории

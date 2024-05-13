@@ -1,5 +1,5 @@
 import Styles from './DeleteAccountForm.module.css'
-
+import {BASE_URL} from "../../api/config";
 
 export const DeleteAccountForm = (props) => {
 
@@ -8,7 +8,7 @@ export const DeleteAccountForm = (props) => {
 
     const onDelete = async () => {
         try{
-            const response = await fetch('http://localhost:3001//user/deleteAccount',{
+            const response = await fetch(`${BASE_URL}/user/deleteAccount`,{
                 method: 'DELETE',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ id: userData.id }),

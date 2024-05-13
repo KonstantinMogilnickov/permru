@@ -3,6 +3,10 @@ const {client} = require("../database/connect");
 
 const getNews = async (req, res) => {
     try{
+        if (!req.body) {
+            res.status(400).send('Body is empty');
+            return;
+        }
         const query = `
         SELECT n.*, c.category
         FROM news n
@@ -19,6 +23,10 @@ const getNews = async (req, res) => {
 
 const addNews = async (req, res) => {
     try{
+        if (!req.body) {
+            res.status(400).send('Body is empty');
+            return;
+        }
         const {title, text, image_path, date, creator, id_category, id_news_status} = req.body;
         const query = `
         INSERT INTO news 
@@ -37,6 +45,10 @@ const addNews = async (req, res) => {
 
 const getCategories = async (req, res) => {
     try{
+        if (!req.body) {
+            res.status(400).send('Body is empty');
+            return;
+        }
         const query = `SELECT * FROM news_category`;
         const result = await client.query(query);
         res.status(200).json(result.rows);

@@ -1,6 +1,8 @@
 'use client';
 import { useState } from "react";
 import Styles from "./ChangePasswordForm.module.css";
+import {BASE_URL} from "../../api/config"
+
 
 export const ChangePasswordForm = ({ onClose }) => {
   const [oldPassword, setOldPassword] = useState("");
@@ -35,7 +37,7 @@ export const ChangePasswordForm = ({ onClose }) => {
     }
 
     try {
-        const response = await fetch ('http://localhost:3001//user/updateUserPassword',{
+        const response = await fetch (`${BASE_URL}/user/updateUserPassword`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json' 

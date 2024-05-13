@@ -17,8 +17,6 @@ export const Header = ()=>{
     const pathname = usePathname();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     
-    
-
     const isOpen = () => {
         setPopupIsOpened(true);
     };
