@@ -23,29 +23,37 @@ export const AuthForm = (props) => {
   };
 
   const handleSubmit = async (e) => {
-      e.preventDefault();
-      try {
-          const response = await axios.post(`${BASE_URL}/user/loginUser`, loginData); //Запрос на сервер для аутентификации
-          const token = response.data.token; //Получение токена в ответе от сервера
- 
-          localStorage.setItem('token', token);//Сохранение токена в локальное хранилище
-          setIsLoginFormOpen(false);
+    e.preventDefault();
+    try {
+      const response = await axios.post(`${BASE_URL}/user/loginUser`, loginData); // Запрос на сервер для аутентификации
+      const token = response.data.token; // Получение токена в ответе от сервера
+      const userData = response.data.user; // Получение текущего пользователя
 
-          const userData = response.data.user;//Получение текущего пользователя
-          if (userData) {
-              localStorage.setItem('userData', JSON.stringify(userData));//Запись текущего пользователя в локальное хранилище
-          } else {
-              console.error('Данные пользователя не получены');
-          }
-          console.log(response.data)
-          // Передаем и токен, и данные пользователя в функцию handleSuccessfulAuth
-          props.close(token);
-      } catch (error) {
-          alert('Неправильный логин или пароль');
-          console.log(error);
+      if(response.status === 200){
+        alert('Авторизация прошла успешно');
       }
-  };
+      // Проверка, заблокирован ли пользователь
+      if (userData.is_blocked) {
+        alert('Ваш аккаунт заблокирован за нарушение правил сервиса.');
+        return; // Прекращаем выполнение, если пользователь заблокирован
+      }
 
+      localStorage.setItem('token', token); // Сохранение токена в локальное хранилище
+      setIsLoginFormOpen(false);
+
+      if (userData) {
+        localStorage.setItem('userData', JSON.stringify(userData)); // Запись текущего пользователя в локальное хранилище
+      } else {
+        console.error('Данные пользователя не получены');
+      }
+      console.log(response.data);
+      // Передаем и токен, и данные пользователя в функцию handleSuccessfulAuth
+      props.close(token);
+    } catch (error) {
+      alert('Неправильный логин или пароль');
+      console.log(error);
+    }
+  };
   return (
     <form  className={Styles['form']} onSubmit={handleSubmit}>
       

@@ -1,5 +1,5 @@
 .main{
-    min-height: 40vh;
+    min-height: 100vh;
     font-family: 'Roboto', sans-serif;
     background: rgb(255,255,255);
     background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(230,233,237,1) 100%);
@@ -13,6 +13,7 @@
     box-sizing: border-box;
     margin: 0 auto;
     padding-bottom: 0;
+
 }
 
 .title{
@@ -30,9 +31,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color:lightgray;
-    padding: 15px;
-    width: 530px;
+    width: 700px;
     border-radius: 15px;
 }
 
@@ -82,4 +81,19 @@
     padding: 10px;
     font-weight: bold;
     font-size: 20px;
+}
+.exit-btn{
+    background: transparent;
+    border: none;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+.personal__data-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+
 }

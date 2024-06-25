@@ -24,6 +24,12 @@ export default function PersonalCabinet() {
     setPopupIsOpened(true);
   };
 
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('userData');
+        window.location = '/';
+    };
+
   const isClose = () => {
     setPopupIsOpened(false);
   };
@@ -39,56 +45,54 @@ export default function PersonalCabinet() {
   return (
     <>
       <Header />
-      <main className={`${Styles["main"]} ${Styles["container"]}`}>
-        <h1 className={Styles["title"]}>Личный кабинет</h1>
-        {userData && (
-          <div className={Styles["personal__data"]}>
-            <div className={Styles["data"]}>
-              <p className={Styles["user__data"]}>Логин: {userData.login}</p>
-              <p className={Styles["user__data"]}>
-                Фамилия: {userData.surname}
-              </p>
-              <p className={Styles["user__data"]}>Имя: {userData.name}</p>
-              <p className={Styles["user__data"]}>
-                Отчество: {userData.patrynumic}
-              </p>
-              <p className={Styles["user__data"]}>
-                Электронная почта: {userData.email}
-              </p>
+        <main className={`${Styles["main"]} ${Styles["container"]}`}>
+            <h1 className={Styles["title"]}>Личный кабинет</h1>
+            {userData && (
+                <>
+                    <div className={Styles['personal__data-container']}>
+                        <div className={Styles["personal__data"]}>
+                            <div className={Styles["data"]}>
+                                <p className={Styles["user__data"]}>Логин: {userData.login}</p>
+                                <p className={Styles["user__data"]}>
+                                    Фамилия: {userData.surname}
+                                </p>
+                                <p className={Styles["user__data"]}>Имя: {userData.name}</p>
+                                <p className={Styles["user__data"]}>
+                                    Отчество: {userData.patrynumic}
+                                </p>
+                                <p className={Styles["user__data"]}>
+                                    Электронная почта: {userData.email}
+                                </p>
+                            </div>
 
-              <p className={Styles["user__data"]}>
-                Пароль: {userData.password}
-              </p>
-              {userData.id_role === "3" && <button>нажми</button>}
-              {userData.id_role === "4" && <button className={Styles['btn__add__news']}>
-                <Link className={Styles['add__news__link']} href='/AddNews'>
-                Редактор новостей
-              </Link></button>}
-            </div>
+                            <div className={Styles["change"]}>
+                                <button className={Styles["change__password"]} onClick={openChangePasswordPopup}>
+                                    Изменить пароль
+                                </button>
+                                <button
+                                    className={Styles["delete__account"]}
+                                    onClick={isOpen}
+                                >
+                                    Удалить аккаунт
+                                </button>
+                            </div>
+                        </div>
+                        <button onClick={handleLogout} className={Styles['exit-btn']}>Выйти из учётной записи</button>
+                    </div>
 
-            <div className={Styles["change"]}>
-              <button className={Styles["change__password"]} onClick={openChangePasswordPopup}>
-                Изменить пароль
-              </button>
-              <button
-                className={Styles["delete__account"]}
-                onClick={isOpen}
-              >
-                Удалить аккаунт
-              </button>
-            </div>
-          </div>
-        )}
-          <Overlay isOpened={popupIsOpened || changePasswordPopupIsOpened} onClose={isClose || closeChangePasswordPopup} />
-                <Popup isOpen={popupIsOpened} onClose={isClose}>
-                    <DeleteAccountForm onClose={isClose}/>
-                </Popup>
+                </>
+            )}
 
-                <Popup isOpen={changePasswordPopupIsOpened} onClose={closeChangePasswordPopup}>
-                    <ChangePasswordForm onClose={closeChangePasswordPopup}/>
+            <Overlay isOpened={popupIsOpened || changePasswordPopupIsOpened}
+                     onClose={isClose || closeChangePasswordPopup}/>
+            <Popup isOpen={popupIsOpened} onClose={isClose}>
+                <DeleteAccountForm onClose={isClose}/>
             </Popup>
-      </main>
-      <Footer />
+
+            <Popup isOpen={changePasswordPopupIsOpened} onClose={closeChangePasswordPopup}>
+                <ChangePasswordForm onClose={closeChangePasswordPopup}/>
+            </Popup>
+        </main>
     </>
   );
 }

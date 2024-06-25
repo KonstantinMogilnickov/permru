@@ -12,7 +12,7 @@ const getNews = async (req, res) => {
         FROM news n
         INNER JOIN news_category c ON n.id_category = c.id
         `;
-        const result = await client.query(query);  
+        const result = await client.query(query);
         res.status(200).json(result.rows);
         
     }catch(error){
@@ -59,6 +59,22 @@ const getCategories = async (req, res) => {
     }
 }
 
+const deleteNews = async (req,res) =>{
+    try {
+       if(!req.body){
+           res.status(400).send('Body is empty');
+       }
+       const {id} = req.body;
+
+       const query = `DELETE FROM news WHERE id = $1`;
+       const result = await client.query(query,[id]);
+       res.status(200).json({message: "Новость успешно удалена"});
+    }catch (err){
+        console.log(err);
+        res.status(500).send('Internal server error');
+    }
+}
+
 module.exports = {
-    getNews, addNews, getCategories
+    getNews, addNews, getCategories, deleteNews
 }

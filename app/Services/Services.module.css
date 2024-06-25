@@ -1,0 +1,16 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    padding: 6rem 150px;
+    min-height: 100vh;
+    list-style-type: none;
+    font-family: 'Roboto', sans-serif;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(230,233,237,1) 100%);
+}
+
+.data__loading{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}

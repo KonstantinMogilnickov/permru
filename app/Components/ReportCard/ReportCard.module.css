@@ -1,0 +1,15 @@
+.user-card__container{
+    display: flex;
+    flex-direction: column;
+    gap:15px 0;
+    border-radius: 5px;
+}
+
+.report-card__description{
+    word-wrap: break-word;
+    line-height: 20px;
+}
+
+.report-card__id{
+    font-weight: bold;
+}

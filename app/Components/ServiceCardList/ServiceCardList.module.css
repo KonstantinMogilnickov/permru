@@ -1,0 +1,12 @@
+.cards-list{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px 0;
+    margin-top: 20px;
+}
+
+.list-section__title{
+    margin-top: 30px;
+    font-size: 30px;
+}

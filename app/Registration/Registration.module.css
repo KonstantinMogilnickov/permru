@@ -9,6 +9,7 @@
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Стандарт */
+     color:black;
  }
 
  .reg__title{
@@ -109,3 +110,23 @@
   color: #fff; /* Цвет текста при наведении */
   transition: all 0.5s ease-in-out;
 }
+
+.policy{
+    padding-left: 5px;
+}
+
+.policy-container{
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+ .download-link {
+     display: block;
+     margin-bottom: 10px;
+     color: #0070f3;
+     text-decoration: underline;
+ }
+ .download-link:hover {
+     text-decoration: none;
+ }

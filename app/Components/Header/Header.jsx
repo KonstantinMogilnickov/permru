@@ -9,14 +9,14 @@ import { AuthForm } from '../AuthForm/AuthForm';
 import { useState, useEffect} from 'react';
 
 
-
-//////////////////////////////////////////////////////////////////////////
-
 export const Header = ()=>{
     const [popupIsOpened, setPopupIsOpened] = useState(false);
     const pathname = usePathname();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    
+
+    const userDataString = localStorage.getItem("userData");
+    const userData = JSON.parse(userDataString);
+
     const isOpen = () => {
         setPopupIsOpened(true);
     };
@@ -29,12 +29,6 @@ export const Header = ()=>{
         setIsAuthenticated(true);
         localStorage.setItem('token', token);
         isClose(); // Закрыть форму после успешной авторизации
-    };
-
-    const handleLogout = () => {
-        setIsAuthenticated(false);
-        localStorage.removeItem('token');
-        localStorage.removeItem('userData');
     };
 
     useEffect(() => {
@@ -72,40 +66,60 @@ export const Header = ()=>{
                         Новости
                     </Link>
                     </li>
-                    <li className={Styles['menu-item']}><Link href='/yslugi' className={`${Styles['menu-link']} ${
-                        pathname === '/yslugi' && Styles['menu-link-active']
-                    }`}>
-                        Услуги
-                    </Link>
-                    </li>
-                    <li className={Styles['menu-item']}><Link href='/mycity' className={`${Styles['menu-link']} ${
-                        pathname === '/mycity' && Styles['menu-link-active']
-                    }`}>
-                        Мой район
-                    </Link>
+                    {isAuthenticated && userData.id_role === '1' ? (
+                        <>
+                        <li className={Styles['menu-item']}><Link href='/Services' className={`${Styles['menu-link']} ${
+                            pathname === '/Services' && Styles['menu-link-active']
+                        }`}>
+                            Услуги
+                        </Link>
                         </li>
-                    <li className={Styles['menu-item']}><Link href='/help' className={`${Styles['menu-link']} ${
-                        pathname === '/help' && Styles['menu-link-active']
-                    }`}>
-                        Помощь
-                    </Link>
-                        </li>
+    
+                        <li className={Styles['menu-item']}><Link href='/report' className={`${Styles['menu-link']} ${
+                            pathname === '/report' && Styles['menu-link-active']
+                        }`}>
+                            Помощь
+                        </Link>
+                            </li>
+                        </>
+                        
+                    ): ('')}
                 </ul>
 
             </nav>
             <div className={Styles["auth"]}>
-            {isAuthenticated ? (
-                        <button className={Styles["auth-text"]} onClick={handleLogout}><Link href = '/'>Выйти
-                        </Link></button>
-                    ) : (
-                        <button className={Styles["auth-text"]} onClick={isOpen}>Войти</button>
-                    )}
-
-                    {isAuthenticated && (
+                {isAuthenticated && (
                     <Link href='/Personalcabinet' className={Styles["auth-text"]}>
                         Личный кабинет
                     </Link>
                 )}
+
+                {isAuthenticated && userData.id_role === "1" ? (
+                   <Link  href='/myservices' className={`${Styles['auth-text']}`}>
+                        Мои услуги
+                    </Link>
+                 ): ""
+                }
+
+                {isAuthenticated && userData.id_role === "4" &&
+                    <Link className={Styles['auth-text']} href='/AddNews'>
+                        Редактор новостей
+                    </Link>}
+
+                    {isAuthenticated && userData.id_role === "3" &&
+                    <Link className={Styles['auth-text']} href='/AdminPanel'>
+                        Админ панель
+                    </Link>}
+
+                    {isAuthenticated && userData.id_role === "2" &&
+                    <Link className={Styles['auth-text']} href='/servicecontrol'>
+                        Активные заявки
+                    </Link>}
+            {isAuthenticated ? (
+                       ""
+                    ) : (
+                        <button className={Styles["auth-text"]} onClick={isOpen}>Войти</button>
+                    )}
             </div>
             </div>
             <Overlay isOpened={popupIsOpened} onClose={isClose} />

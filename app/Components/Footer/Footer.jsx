@@ -62,46 +62,9 @@ export const Footer = (props) => {
                 </ul>
                 
                 </div>
-
-                <div className={Styles["footer-menu-card"]}>
-                    <div className={Styles["menu-header"]}>
-                        Мой район
-                    </div>
-                <ul className={Styles['footer-menu']}>
-                    <li className={Styles['footer-menu-item']}>Поликлиники</li>
-                    <li className={Styles['footer-menu-item']}>Детские сады</li>
-                    <li className={Styles['footer-menu-item']}>Школы</li>
-                    <li className={Styles['footer-menu-item']}>Транспортная инфраструтура</li>
-                    <li className={Styles['footer-menu-item']}>Центры госуслуг</li>
-                    <li className={`${Styles['footer-menu-item']} ${Styles['footer-menu-item-all']}`}>Все объекты</li>
-                </ul>
-                
-                </div>
-
-
-
-                <div className={Styles["footer-menu-card"]}>
-                    <div className={Styles["menu-header"]}>
-                        Мой район
-                    </div>
-                <ul className={Styles['footer-menu']}>
-                    <li className={Styles['footer-menu-item']}>Поликлиники</li>
-                    <li className={Styles['footer-menu-item']}>Детские сады</li>
-                    <li className={Styles['footer-menu-item']}>Школы</li>
-                    <li className={Styles['footer-menu-item']}>Транспортная инфраструтура</li>
-                    <li className={Styles['footer-menu-item']}>Центры госуслуг</li>
-                    <li className={`${Styles['footer-menu-item']} ${Styles['footer-menu-item-all']}`}>Все объекты</li>
-                </ul>
-                
-                </div>
             </div>
             </nav>
                     </div>
-                    
-
-            <hr className={Styles["hr"]}/>
-
-
         </footer>
     )
 }

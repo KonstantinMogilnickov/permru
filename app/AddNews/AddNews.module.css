@@ -16,9 +16,11 @@
     gap: 10px;
     max-width: 500px;
     margin-top: 20px;
+
   }
   
-  .form__label {
+  .form__label,
+  .select__news__title {
     font-weight: bold;
   }
   
@@ -64,4 +66,14 @@
   
   .btn__submit:hover {
     background-color: #0056b3;
+  }
+
+  .container{
+    display: flex;
+    flex-direction: row;
+    gap:0 60px;
+  }
+
+  .select__news__container{
+    margin-top: 20px;
   }

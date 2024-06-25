@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     font-family: 'Roboto', sans-serif;
+    color:black;
   }
   
   .form__title {

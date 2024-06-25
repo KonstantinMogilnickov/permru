@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3002",
+    "dev": "next dev -p 3004",
     "build": "next build",
     "lint": "next lint",
-    "start": "nodemon app.js"
+    "start": "nodemon "
   },
   "dependencies": {
     "axios": "^1.6.8",
@@ -24,9 +24,10 @@
     "pg": "^8.11.5",
     "querystring": "^0.2.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-input-mask": "^2.0.4"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.1"
   }
 }

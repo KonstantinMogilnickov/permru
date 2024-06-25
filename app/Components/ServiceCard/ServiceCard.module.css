@@ -1,0 +1,21 @@
+.card__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px 0;
+}
+
+.card__title{
+    font-weight: bolder;
+    font-size: 22px;
+}
+
+.card__organization{
+    opacity: 70%;
+    font-size: 18px;
+}
+
+.card__price{
+    opacity: 70%;
+    font-size: 18px;
+}

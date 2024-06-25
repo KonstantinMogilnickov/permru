@@ -18,6 +18,7 @@ export const DeleteAccountForm = (props) => {
                 localStorage.removeItem("userData");
                 window.location.href = "/";
                 localStorage.removeItem("token");
+                alert("Вы успешно удалили аккаунт!");
             }
             else{
                 alert("Произошла ошибка при удалении аккаунта! Попробуйте позже");

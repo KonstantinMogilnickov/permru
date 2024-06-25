@@ -77,7 +77,7 @@ export default function Home() {
             <Preloader/>
           </div>
         )}
-
+        
         <MainThemes/>
 
     </main>

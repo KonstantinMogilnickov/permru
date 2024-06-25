@@ -10,6 +10,8 @@ const app = express();
 const userRouter = require('./routes/userRouter');
 const newsRouter = require('./routes/newsRouter');
 const uploadRouter = require('./routes/uploadRouter');
+const serviceRouter = require('./routes/ServiceRouter');
+const helpRouter = require('./routes/helpRouter');
  
 app.use(bodyParser.json());
 app.use(cors({
@@ -19,6 +21,8 @@ app.use(cors({
 app.use('/upload', uploadRouter);
 app.use('/user', userRouter);
 app.use('/news', newsRouter);
+app.use('/services', serviceRouter);
+app.use('/help', helpRouter);
 
 // Подключение к базе данных перед запуском сервера
 client.connect()

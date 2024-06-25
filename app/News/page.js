@@ -5,6 +5,8 @@ import { Header } from "../Components/Header/Header";
 import { CardsList } from "../Components/CardList/CardList.jsx";
 import { useState, useEffect } from "react";
 import {BASE_URL} from "../api/config";
+import {Preloader} from "../Components/Preloader/Preloader";
+import styles from "@/app/page.module.css";
 
 export default function News (){
     const [news, setNews] = useState([]);
@@ -30,13 +32,19 @@ export default function News (){
         <>
         <Header/>
         <main className={Styles.main}>
-        <CardsList
-              id="popular"
-              title="Новости"
-              data={news.slice(0, visibleNews)} // Отображаем только visibleNews записей
-            />
+            {news.length >0 ? (
+                <CardsList
+                    id="popular"
+                    title="Новости"
+                    data={news.slice(0, visibleNews)} // Отображаем только visibleNews записей
+                />
+            ):(
+                <div className={styles["data__loading"]}>
+                    <Preloader/>
+                </div>
+            )}
         </main>
-        <Footer/>
+            <Footer/>
         </>
     )
 }

@@ -1,0 +1,23 @@
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 500px;
+}
+.loader__element {
+    border-radius: 100%;
+    border: 5px solid #555;
+    margin: calc(5px *2);
+}
+.loader__element:nth-child(1) {
+    animation: preloader .6s ease-in-out alternate infinite;
+}
+.loader__element:nth-child(2) {
+    animation: preloader .6s ease-in-out alternate .2s infinite;
+}
+.loader__element:nth-child(3) {
+    animation: preloader .6s ease-in-out alternate .4s infinite;
+}
+@keyframes preloader {
+    100% { transform: scale(2); }
+}
